@@ -1,5 +1,9 @@
 import os
 
+"""
+A console-based program that allows you to save your contacts
+"""
+
 FOLDER = 'contacts/'
 TXT_FILE = '.txt'
 
@@ -193,7 +197,7 @@ def delete_contact():
     try:
         os.remove(FOLDER + contact_name + TXT_FILE)
         print("\r\n**********************************************************\r\n")
-        print("WELL DONE!!! CONTACT SUCCESSFULLY EDITED ٩(˘◡˘)۶ \r\n")
+        print("WELL DONE!!! CONTACT SUCCESSFULLY DELETED ٩(˘◡˘)۶ \r\n")
         print("**********************************************************\r\n")
     except IOError:
         print("\r\nSorry, this contact doesn't exist, try again (ㆆ_ㆆ)\r\n")
