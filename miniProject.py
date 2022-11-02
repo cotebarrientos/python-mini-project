@@ -42,6 +42,11 @@ def MyApp():
             elif option == 5:
                 delete_contact()
                 ask_user = False
+            elif option == 6:
+                print("\r\n----------------------------------------------------------\r\n")
+                print("GOOD BYE, SEE YA LATER!!!! ಥ_ಥ")
+                print("\r\n----------------------------------------------------------\r\n")
+                ask_user = False
             else:
                 print("Sorry, invalid option, try again (ㆆ_ㆆ)")
                 print("\r\n----------------------------------------------------------\r\n")
@@ -59,6 +64,7 @@ def display_menu():
     print("3) Display my contacts")
     print("4) Search contact")
     print("5) Delete contact")
+    print("6) Exit (╥﹏╥)")
     print("\r\n----------------------------------------------------------\r\n")
 
 
