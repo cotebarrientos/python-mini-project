@@ -15,7 +15,7 @@ class Contact:
 def MyApp():
     # To check if the folder was created
     create_directory()
-
+    # To display the menu
     display_menu()
 
     # Ask a user about an option from the menu
@@ -35,7 +35,7 @@ def MyApp():
             display_contacts()
             ask_user = False  
         elif option == 4:
-            print("Search contact")
+            search_contact()
             ask_user = False  
         elif option == 5:
             print("Delete contact")
@@ -63,7 +63,8 @@ def display_contacts():
     txt_archives = [i for i in archives if i.endswith(TXT_FILE)] 
 
     print("\r\n----------------------------------------------------------\r\n")
-    print("ALL YOUR CONTACTS ٩(˘◡˘)۶ \r\n")
+    print("ALL YOUR CONTACTS ٩(˘◡˘)۶")
+    print("\r\n----------------------------------------------------------\r\n")
 
     for archive in txt_archives:
         with open(FOLDER + archive) as my_contacts:
@@ -71,6 +72,26 @@ def display_contacts():
                 print(line.rstrip())
             print("\r\n----------------------------------------------------------\r\n")                   
     
+    MyApp()
+
+
+def search_contact():
+    print("\r\n----------------------------------------------------------\r\n")
+    print("SEARCH A CONTACT ٩(˘◡˘)۶")
+    print("\r\n----------------------------------------------------------\r\n")
+    select_contact = input("Select a contact to search for: \r\n")
+
+    try:
+        with open(FOLDER + select_contact + TXT_FILE) as contact:
+            print("\r\n----------------------------------------------------------\r\n")
+            print("YOUR CONTACT INFORMATION (≖_≖ )")
+            print("\r\n----------------------------------------------------------\r\n")
+            for line in contact:
+                print(line.rstrip())
+            print("\r\n----------------------------------------------------------\r\n")
+    except IOError: 
+        print("\r\nSorry, this contact doesn't exist, try again (ㆆ_ㆆ)\r\n")
+
     MyApp()
 
 
