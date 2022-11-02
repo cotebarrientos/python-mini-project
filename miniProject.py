@@ -8,6 +8,31 @@ def MyApp():
 
     display_menu()
 
+    # Ask a user about an option from the menu
+    ask_user = True
+    while ask_user:
+        option = input("Select an option from this menu \r\n")
+        option = int(option)
+
+        # To execute the menu options
+        if option == 1:
+            print("Add a new contact")
+            ask_user = False
+        elif option == 2:
+            print("Edit contact")
+            ask_user = False
+        elif option == 3:
+            print("Display my contacts")
+            ask_user = False  
+        elif option == 4:
+            print("Search contact")
+            ask_user = False  
+        elif option == 5:
+            print("Delete contact")
+            ask_user = False
+        else:
+            print("Sorry, invalid option, try again (ㆆ_ㆆ)")
+            print("\r\n----------------------------------------------------------")      
 
 def display_menu():
     print("\r\n---------------------------------------------------------- \r\n")
