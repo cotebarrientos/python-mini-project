@@ -32,7 +32,7 @@ def MyApp():
             edit_contact()
             ask_user = False
         elif option == 3:
-            print("Display my contacts")
+            display_contacts()
             ask_user = False  
         elif option == 4:
             print("Search contact")
@@ -55,6 +55,23 @@ def display_menu():
     print("4) Search contact")
     print("5) Delete contact")
     print("\r\n----------------------------------------------------------\r\n")
+
+
+def display_contacts():
+    archives = os.listdir(FOLDER)
+
+    txt_archives = [i for i in archives if i.endswith(TXT_FILE)] 
+
+    print("\r\n----------------------------------------------------------\r\n")
+    print("ALL YOUR CONTACTS ٩(˘◡˘)۶ \r\n")
+
+    for archive in txt_archives:
+        with open(FOLDER + archive) as my_contacts:
+            for line in my_contacts:
+                print(line.rstrip())
+            print("\r\n----------------------------------------------------------\r\n")                   
+    
+    MyApp()
 
 
 def add_contact():
