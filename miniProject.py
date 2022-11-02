@@ -22,27 +22,32 @@ def MyApp():
     ask_user = True
     while ask_user:
         option = input("Select an option from this menu \r\n")
-        option = int(option)
 
-        # To execute the menu options
-        if option == 1:
-            add_contact()
-            ask_user = False
-        elif option == 2:
-            edit_contact()
-            ask_user = False
-        elif option == 3:
-            display_contacts()
-            ask_user = False  
-        elif option == 4:
-            search_contact()
-            ask_user = False  
-        elif option == 5:
-            delete_contact()
-            ask_user = False
+        if option.isnumeric():
+            option = int(option)
+
+            # To execute the menu options
+            if option == 1:
+                add_contact()
+                ask_user = False
+            elif option == 2:
+                edit_contact()
+                ask_user = False
+            elif option == 3:
+                display_contacts()
+                ask_user = False  
+            elif option == 4:
+                search_contact()
+                ask_user = False  
+            elif option == 5:
+                delete_contact()
+                ask_user = False
+            else:
+                print("Sorry, invalid option, try again (ㆆ_ㆆ)")
+                print("\r\n----------------------------------------------------------\r\n")
         else:
             print("Sorry, invalid option, try again (ㆆ_ㆆ)")
-            print("\r\n----------------------------------------------------------\r\n")
+            print("\r\n----------------------------------------------------------\r\n")    
               
 
 def display_menu():
