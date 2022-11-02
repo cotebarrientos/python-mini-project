@@ -38,7 +38,7 @@ def MyApp():
             search_contact()
             ask_user = False  
         elif option == 5:
-            print("Delete contact")
+            delete_contact()
             ask_user = False
         else:
             print("Sorry, invalid option, try again (ㆆ_ㆆ)")
@@ -97,7 +97,8 @@ def search_contact():
 
 def add_contact():
     print("\r\n----------------------------------------------------------\r\n")
-    print("Enter your new contact information ٩(˘◡˘)۶")
+    print("ENTER YOUR NEW CONTACT INFORMATION ٩(˘◡˘)۶")
+    print("\r\n----------------------------------------------------------\r\n")
     contact_name = input("Contact name: \r\n")
     print("----------------------------------------------------------")
 
@@ -133,7 +134,8 @@ def add_contact():
 
 def edit_contact():
     print("\r\n----------------------------------------------------------\r\n")
-    print("Enter the contact name you want to edit ٩(˘◡˘)۶")
+    print("ENTER THE CONTACT YOU WANT TO EDIT ٩(˘◡˘)۶")
+    print("\r\n----------------------------------------------------------\r\n")
     previous_name = input("Contact name: \r\n")
     print("----------------------------------------------------------") 
 
@@ -163,12 +165,28 @@ def edit_contact():
         os.rename(FOLDER + previous_name + TXT_FILE, FOLDER + new_name + TXT_FILE)
 
         print("\r\n**********************************************************\r\n")
-        print("WELL DONE!!! CONTACT SUCCESSFULLY CREATED ٩(˘◡˘)۶ \r\n")
+        print("WELL DONE!!! CONTACT SUCCESSFULLY EDITED ٩(˘◡˘)۶ \r\n")
         print("**********************************************************\r\n")            
 
     else:
         print("\r\nSorry, this contact doesn't exist (ㆆ_ㆆ)\r\n")
     
+    MyApp()
+
+
+def delete_contact():
+    print("\r\n----------------------------------------------------------\r\n")
+    print("ENTER THE CONTACT YOU WANT TO DELETE ٩(˘◡˘)۶")
+    print("\r\n----------------------------------------------------------\r\n")
+    contact_name = input("Contact name: \r\n")
+    try:
+        os.remove(FOLDER + contact_name + TXT_FILE)
+        print("\r\n**********************************************************\r\n")
+        print("WELL DONE!!! CONTACT SUCCESSFULLY EDITED ٩(˘◡˘)۶ \r\n")
+        print("**********************************************************\r\n")
+    except IOError:
+        print("\r\nSorry, this contact doesn't exist, try again (ㆆ_ㆆ)\r\n")
+
     MyApp()
 
 
