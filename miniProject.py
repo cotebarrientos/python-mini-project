@@ -29,7 +29,7 @@ def MyApp():
             add_contact()
             ask_user = False
         elif option == 2:
-            print("Edit contact")
+            edit_contact()
             ask_user = False
         elif option == 3:
             print("Display my contacts")
@@ -42,7 +42,8 @@ def MyApp():
             ask_user = False
         else:
             print("Sorry, invalid option, try again (ㆆ_ㆆ)")
-            print("\r\n----------------------------------------------------------\r\n")      
+            print("\r\n----------------------------------------------------------\r\n")
+              
 
 def display_menu():
     print("\r\n----------------------------------------------------------\r\n")
@@ -63,7 +64,7 @@ def add_contact():
     print("----------------------------------------------------------")
 
     # To check if a contact already exits
-    exist = os.path.isfile(FOLDER + contact_name + TXT_FILE)
+    exist = contact_exist(contact_name)
 
     if not exist:
         with open(FOLDER + contact_name + TXT_FILE, "w") as archive:
@@ -74,7 +75,6 @@ def add_contact():
             email = input("Email: \r\n")
             print("----------------------------------------------------------")
             category = input("Category: \r\n")
-            print("----------------------------------------------------------")
 
             contact = Contact(contact_name, address, telephone, email, category)
 
@@ -91,6 +91,52 @@ def add_contact():
         print("\r\nSorry, this contact already exist, try again (ㆆ_ㆆ)\r\n")
     
     MyApp()
+
+
+def edit_contact():
+    print("\r\n----------------------------------------------------------\r\n")
+    print("Enter the contact name you want to edit ٩(˘◡˘)۶")
+    previous_name = input("Contact name: \r\n")
+    print("----------------------------------------------------------") 
+
+    exist =  contact_exist(previous_name)  
+
+    if exist:
+        with open(FOLDER + previous_name + TXT_FILE, "w") as archive:
+            new_name = input("Enter a new contact name: \r\n")
+            print("----------------------------------------------------------")
+            new_address = input("Enter a new address: \r\n")
+            print("----------------------------------------------------------")
+            new_telephone = input("enter a new telephone: \r\n")
+            print("----------------------------------------------------------")
+            new_email = input("Enter a new Email: \r\n")
+            print("----------------------------------------------------------")
+            new_category = input("Enter a new category: \r\n")
+
+            contact = Contact(new_name, new_address, new_telephone, new_email, new_category)
+
+            archive.write("Name: " + contact.name + "\n")
+            archive.write("Address: " + contact.address + "\n")
+            archive.write("Telephone: " + contact.telephone + "\n")
+            archive.write("Email: " + contact.email + "\n")
+            archive.write("Category: " + contact.category + "\n")
+
+        # Rename the current archive
+        os.rename(FOLDER + previous_name + TXT_FILE, FOLDER + new_name + TXT_FILE)
+
+        print("\r\n**********************************************************\r\n")
+        print("WELL DONE!!! CONTACT SUCCESSFULLY CREATED ٩(˘◡˘)۶ \r\n")
+        print("**********************************************************\r\n")            
+
+    else:
+        print("\r\nSorry, this contact doesn't exist (ㆆ_ㆆ)\r\n")
+    
+    MyApp()
+
+
+def contact_exist(name):
+    return os.path.isfile(FOLDER + name + TXT_FILE)
+
 
 def create_directory():
     if not os.path.exists(FOLDER):
